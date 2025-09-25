@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children,}: Readonly<{ children: ReactNode; }>) {
     return (
         <html lang="en">
+        <head>
+        <script src="https://telegram.org/js/telegram-web-app.js?59">
+        </script>
+        </head>
         <body>
         {children}
         </body>
