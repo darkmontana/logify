@@ -15,12 +15,16 @@ export default function Home() {
         if (user_data) setMessage("Success");
         else setMessage("Fail");
 
-        // @ts-ignore
-        const tg = window.Telegram.WebApp;
-        if (user_data) tg.sendData(JSON.stringify(user_data));
-        else tg.sendData(JSON.stringify({validity: 0,}));
-        setMessage("Test #1 - PASS");
-        //tg.close();
+        try {
+            // @ts-ignore
+            const tg = window.Telegram.WebApp;
+            if (user_data) tg.sendData(JSON.stringify(user_data));
+            else tg.sendData(JSON.stringify({validity: 0,}));
+            tg.close();
+            setMessage("Test - PASS");
+        } catch (error) {
+            setMessage("Test - FAIL");
+        }
     };
 
     return (
