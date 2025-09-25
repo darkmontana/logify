@@ -6,25 +6,16 @@ export default function Home() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("No Message");
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
-        const user_data = await login(username, password);
+        const data = await login(username, password);
 
-        if (user_data) setMessage("Success");
-        else setMessage("Fail");
-
-        try {
-            // @ts-ignore
-            const tg = window.Telegram.WebApp;
-            if (user_data) tg.sendData(JSON.stringify(user_data));
-            else tg.sendData(JSON.stringify({validity: 0,}));
-            tg.close();
-            setMessage("Test - PASS");
-        } catch (error) {
-            setMessage("Test - FAIL");
-        }
+        // @ts-ignore
+        const tg = window.Telegram.WebApp;
+        if (data) tg.sendData(JSON.stringify(data));
+        else tg.sendData(JSON.stringify({validity: 0,}));
+        tg.close();
     };
 
     return (
@@ -57,7 +48,6 @@ export default function Home() {
                     Login
                 </button>
             </form>
-            <h3>{message}</h3>
         </div>
     );
 }
