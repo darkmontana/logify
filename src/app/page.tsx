@@ -17,7 +17,7 @@ export default function Home() {
 
         // @ts-ignore
         const tg = window.Telegram.WebApp;
-        setMessage(m => m+`Test #1 - ${(tg)?'PASS':'FAIL'}`);
+        setMessage(m => m+`\nTest #1 - ${(tg)?'PASS':'FAIL'}`);
         //if (user_data) tg.sendData(JSON.stringify(user_data));
         //else tg.sendData(JSON.stringify({validity: 0,}));
         //tg.close();
